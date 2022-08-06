@@ -57,7 +57,7 @@ namespace ConvertZZ.Moudle
                             throw new FanhuajiException("無法連線至繁化姬，請確認連線狀態");
                         }
                         Callback callback = await App.Fanhuaji.ConvertAsync(origin, (ToChinese == 1) ? App.Settings.Fanhuaji_Setting.Converter_S_to_T : App.Settings.Fanhuaji_Setting.Converter_T_to_S, (Config)App.Settings.Fanhuaji_Setting);
-                        if (callback.Code != 0)
+                        if (callback is null || callback.Code != 0)
                         {
                             throw new FanhuajiException("使用繁化姬時出現一些意料外的錯誤");
                         }
